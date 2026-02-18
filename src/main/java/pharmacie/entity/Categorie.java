@@ -35,4 +35,9 @@ public class Categorie {
 	@JsonIgnoreProperties({"categorie", "lignes"})
 	private List<Medicament> medicaments = new LinkedList<>();
 
+	@OneToMany (cascade = CascadeType.ALL , mappedBy = "categorie")
+	@ToString.Exclude
+	@JsonIgnoreProperties({"categorie"})
+	private List<Fournisseur> fournisseurs = new LinkedList<>();
+
 }
