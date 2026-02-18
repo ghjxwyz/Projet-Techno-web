@@ -17,7 +17,7 @@ INSERT INTO CATEGORIE (CODE, LIBELLE, DESCRIPTION) VALUES
 ALTER TABLE Categorie ALTER COLUMN code RESTART WITH 11;
 
 -- Insertion des fournisseurs
-INSERT INTO FOURNISSEUR (NOM, MAIL )VALUES
+INSERT INTO FOURNISSEUR (NOM, EMAIL )VALUES
 ('PharmaPlus', 'PharmaPlus@gmail.com'),
 ('Pfizer', 'Pfizer@gmail.com'),
 ('Sanofi', 'Sanofi@gmail.com'), 
@@ -29,38 +29,6 @@ INSERT INTO FOURNISSEUR (NOM, MAIL )VALUES
 ('Merck', 'Merck@gmail.com'),
 ('Bayer', 'Bayer@gmail.com');
 
--- Association catégories <-> fournisseurs
-DROP TABLE IF EXISTS CATEGORIE_FOURNISSEUR;
-CREATE TABLE CATEGORIE_FOURNISSEUR (
-    CATEGORIE_CODE INT NOT NULL,
-    FOURNISSEUR_NOM VARCHAR(40) NOT NULL,
-    FOURNISSEUR_MAIL VARCHAR(40) NOT NULL,
-    PRIMARY KEY (CATEGORIE_CODE, FOURNISSEUR_NOM, FOURNISSEUR_MAIL),
-    FOREIGN KEY (CATEGORIE_CODE) REFERENCES CATEGORIE(CODE),
-    FOREIGN KEY (FOURNISSEUR_NOM, FOURNISSEUR_MAIL) REFERENCES FOURNISSEUR(NOM, MAIL)
-);
-
-INSERT INTO CATEGORIE_FOURNISSEUR (CATEGORIE_CODE, FOURNISSEUR_NOM, FOURNISSEUR_MAIL) VALUES
-(1, 'PharmaPlus', 'PharmaPlus@gmail.com'),
-(1, 'Pfizer', 'Pfizer@gmail.com'),
-(2, 'Pfizer', 'Pfizer@gmail.com'),
-(2, 'Sanofi', 'Sanofi@gmail.com'),
-(3, 'Sanofi', 'Sanofi@gmail.com'),
-(3, 'Novartis', 'Novartis@gmail.com'),
-(4, 'Novartis', 'Novartis@gmail.com'),
-(4, 'Roche', 'Roche@gmail.com'),
-(5, 'Roche', 'Roche@gmail.com'),
-(5, 'GlaxoSmithKline', 'GlaxoSmithKline@gmail.com'),
-(6, 'GlaxoSmithKline', 'GlaxoSmithKline@gmail.com'),
-(6, 'AstraZeneca', 'AstraZeneca@gmail.com'),
-(7, 'AstraZeneca', 'AstraZeneca@gmail.com'),
-(7, 'Johnson & Johnson', 'Johnson&Johnson@gmail.com'),
-(8, 'Johnson & Johnson', 'Johnson&Johnson@gmail.com'),
-(8, 'Merck', 'Merck@gmail.com'),
-(9, 'Merck', 'Merck@gmail.com'),
-(9, 'Bayer', 'Bayer@gmail.com'),
-(10, 'Bayer', 'Bayer@gmail.com'),
-(10, 'PharmaPlus', 'PharmaPlus@gmail.com');
 
 -- Catégorie 1: Antalgiques et Antipyrétiques
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
