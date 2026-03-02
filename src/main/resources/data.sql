@@ -29,15 +29,29 @@ INSERT INTO FOURNISSEUR (NOM, EMAIL )VALUES
 ('Merck', 'Merck@gmail.com'),
 ('Bayer', 'Bayer@gmail.com');
 
+-- Association Catégories <-> Fournisseurs (table de jointure ManyToMany)
+-- Chaque fournisseur peut fournir plusieurs catégories
+INSERT INTO CATEGORIE_FOURNISSEURS (CATEGORIES_CODE, FOURNISSEURS_ID) VALUES
+(1, 1), (1, 2), (1, 10),  -- Antalgiques : PharmaPlus, Pfizer, Bayer
+(2, 1), (2, 3), (2, 10),  -- Anti-inflammatoires : PharmaPlus, Sanofi, Bayer
+(3, 2), (3, 3), (3, 6),   -- Antibiotiques : Pfizer, Sanofi, GlaxoSmithKline
+(4, 4), (4, 7),            -- Antihypertenseurs : Novartis, AstraZeneca
+(5, 3), (5, 4), (5, 9),   -- Antidiabétiques : Sanofi, Novartis, Merck
+(6, 6), (6, 8),            -- Antihistaminiques : GlaxoSmithKline, Johnson & Johnson
+(7, 5), (7, 10),           -- Vitamines : Roche, Bayer
+(8, 4), (8, 7),            -- Cardiovasculaires : Novartis, AstraZeneca
+(9, 3), (9, 8),            -- Gastro-intestinaux : Sanofi, Johnson & Johnson
+(10, 6), (10, 7);          -- Respiratoires : GlaxoSmithKline, AstraZeneca
+
 
 -- Catégorie 1: Antalgiques et Antipyrétiques
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
-('Paracétamol 500mg', 1, 'Boîte de 16 comprimés', 2.50, 500, 0, 50, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
+('Paracétamol 500mg', 1, 'Boîte de 16 comprimés', 2.50, 10, 0, 50, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
 ('Paracétamol 1000mg', 1, 'Boîte de 8 comprimés', 3.20, 350, 0, 40, false, 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400'),
 ('Ibuprofène 200mg', 1, 'Boîte de 20 comprimés', 3.80, 400, 0, 45, false, 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400'),
 ('Ibuprofène 400mg', 1, 'Boîte de 12 comprimés', 4.50, 320, 0, 35, false, 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400'),
 ('Aspirine 500mg', 1, 'Boîte de 20 comprimés', 2.90, 450, 0, 50, false, 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400'),
-('Codéine 30mg', 1, 'Boîte de 16 comprimés', 8.90, 150, 0, 20, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
+('Codéine 30mg', 1, 'Boîte de 16 comprimés', 8.90, 5, 0, 20, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
 ('Tramadol 50mg', 1, 'Boîte de 20 gélules', 12.50, 180, 0, 25, false, 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400'),
 ('Morphine 10mg', 1, 'Boîte de 14 comprimés', 25.80, 80, 0, 15, false, 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400'),
 ('Doliprane Effervescent 1g', 1, 'Boîte de 8 comprimés', 3.50, 280, 0, 30, false, 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400'),
@@ -45,7 +59,7 @@ INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, 
 
 -- Catégorie 2: Anti-inflammatoires
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
-('Diclofénac 50mg', 2, 'Boîte de 20 comprimés', 5.60, 300, 0, 35, false, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
+('Diclofénac 50mg', 2, 'Boîte de 20 comprimés', 5.60, 10, 0, 35, false, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
 ('Kétoprofène 100mg', 2, 'Boîte de 12 gélules', 6.80, 250, 0, 30, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
 ('Naproxène 550mg', 2, 'Boîte de 16 comprimés', 7.20, 200, 0, 25, false, 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400'),
 ('Célécoxib 200mg', 2, 'Boîte de 30 gélules', 15.90, 180, 0, 20, false, 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400'),
@@ -58,7 +72,7 @@ INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, 
 
 -- Catégorie 3: Antibiotiques
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
-('Amoxicilline 500mg', 3, 'Boîte de 12 gélules', 5.90, 400, 0, 40, false, 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400'),
+('Amoxicilline 500mg', 3, 'Boîte de 12 gélules', 5.90, 5, 0, 40, false, 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400'),
 ('Amoxicilline + Acide Clavulanique 1g', 3, 'Boîte de 8 comprimés', 8.50, 350, 0, 35, false, 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400'),
 ('Azithromycine 250mg', 3, 'Boîte de 6 comprimés', 9.80, 280, 0, 30, false, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
 ('Ciprofloxacine 500mg', 3, 'Boîte de 10 comprimés', 12.30, 220, 0, 25, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
