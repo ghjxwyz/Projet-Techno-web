@@ -18,16 +18,16 @@ ALTER TABLE Categorie ALTER COLUMN code RESTART WITH 11;
 
 -- Insertion des fournisseurs
 INSERT INTO FOURNISSEUR (NOM, EMAIL )VALUES
-('PharmaPlus', 'PharmaPlus@gmail.com'),
-('Pfizer', 'Pfizer@gmail.com'),
-('Sanofi', 'Sanofi@gmail.com'), 
-('Novartis', 'Novartis@gmail.com'),
-('Roche', 'Roche@gmail.com'),
-('GlaxoSmithKline', 'GlaxoSmithKline@gmail.com'),
-('AstraZeneca', 'AstraZeneca@gmail.com'),
-('Johnson & Johnson', 'Johnson&Johnson@gmail.com'),
-('Merck', 'Merck@gmail.com'),
-('Bayer', 'Bayer@gmail.com');
+('PharmaPlus', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Pfizer', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Sanofi', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'), 
+('Novartis', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Roche', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('GlaxoSmithKline', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('AstraZeneca', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Johnson & Johnson', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Merck', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Bayer', 'esteban.dujancourt-feliu@etud.univ-jfc.fr');
 
 -- Association Catégories <-> Fournisseurs (table de jointure ManyToMany)
 -- Chaque fournisseur peut fournir plusieurs catégories

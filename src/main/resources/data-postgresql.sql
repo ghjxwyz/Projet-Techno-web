@@ -16,6 +16,34 @@ INSERT INTO CATEGORIE (CODE, LIBELLE, DESCRIPTION) VALUES
 (10, 'Médicaments Respiratoires', 'Médicaments pour les troubles respiratoires');
 ALTER SEQUENCE categorie_code_seq RESTART WITH 11;
 
+-- Insertion des fournisseurs
+INSERT INTO FOURNISSEUR (NOM, EMAIL) VALUES
+('PharmaPlus', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Pfizer', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Sanofi', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Novartis', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Roche', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('GlaxoSmithKline', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('AstraZeneca', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Johnson & Johnson', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Merck', 'esteban.dujancourt-feliu@etud.univ-jfc.fr'),
+('Bayer', 'esteban.dujancourt-feliu@etud.univ-jfc.fr');
+
+-- Association Catégories <-> Fournisseurs (table de jointure ManyToMany)
+-- Chaque fournisseur peut fournir plusieurs catégories
+-- Chaque catégorie est fournie par au moins 2 fournisseurs
+INSERT INTO CATEGORIE_FOURNISSEURS (CATEGORIES_CODE, FOURNISSEURS_ID) VALUES
+(1, 1), (1, 2), (1, 10),  -- Antalgiques : PharmaPlus, Pfizer, Bayer
+(2, 1), (2, 3), (2, 10),  -- Anti-inflammatoires : PharmaPlus, Sanofi, Bayer
+(3, 2), (3, 3), (3, 6),   -- Antibiotiques : Pfizer, Sanofi, GlaxoSmithKline
+(4, 4), (4, 7),            -- Antihypertenseurs : Novartis, AstraZeneca
+(5, 3), (5, 4), (5, 9),   -- Antidiabétiques : Sanofi, Novartis, Merck
+(6, 6), (6, 8),            -- Antihistaminiques : GlaxoSmithKline, Johnson & Johnson
+(7, 5), (7, 10),           -- Vitamines : Roche, Bayer
+(8, 4), (8, 7),            -- Cardiovasculaires : Novartis, AstraZeneca
+(9, 3), (9, 8),            -- Gastro-intestinaux : Sanofi, Johnson & Johnson
+(10, 6), (10, 7);          -- Respiratoires : GlaxoSmithKline, AstraZeneca
+
 -- Catégorie 1: Antalgiques et Antipyrétiques
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
 ('Paracétamol 500mg', 1, 'Boîte de 16 comprimés', 2.50, 500, 0, 50, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
